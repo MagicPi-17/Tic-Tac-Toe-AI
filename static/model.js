@@ -18,7 +18,7 @@ export async function predict(board) {
     return prediction.dataSync();
 }
 export async function loadModel() {
-    const model = await tf.loadLayersModel('XO_model/model.json');
+    const model = await tf.loadLayersModel('model/model.json');
     model.summary();
     cachedModel.model = model;
     cachedModel.loaded = true;

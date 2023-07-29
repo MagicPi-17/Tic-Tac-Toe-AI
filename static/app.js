@@ -6,7 +6,11 @@ import { predict, loadModel } from "./model.js";
 document.querySelector('.loading');
 
 
-loadModel().then(document.querySelector('.loading').style.display = 'none');
+
+setTimeout(
+    loadModel()
+    .then(document.querySelector('.loading').style.display = 'none')
+    ,2000);
 
 
 
