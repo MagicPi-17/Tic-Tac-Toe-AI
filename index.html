@@ -7,33 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1127493cd9.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-    <script src="./static/model.js"></script>
     <link rel="stylesheet" href='./static/main.css'>
 
     <title>Document</title>
 </head>
 
+
 <body>
+    <div class="loading"></div>
     <div class="options">
-        <div class="fa-solid fa-x"></div>
-        <div class="fa-solid fa-o"></div>
+        <div value="1" class="option fa-solid fa-x"></div>
+        <div value="-1" class="option fa-solid fa-o"></div>
     </div>
     <div class="main">
-        <button class="grid-item fa-solid fa-x"></button>
-        <button class="grid-item fa-solid fa-o"></button>
-        <button class="grid-item"></button>
+        <div class="cover"></div>
+        <button id="x0" value="0" class="grid-item"></button>
+        <button id="x1" value="1" class="grid-item"></button>
+        <button id="x2" value="2" class="grid-item"></button>
 
-        <button class="grid-item"></button>
-        <button class="grid-item"></button>
-        <button class="grid-item"></button>
+        <button id="x3" value="3"  class="grid-item"></button>
+        <button id="x4" value="4"  class="grid-item"></button>
+        <button id="x5" value="5" class="grid-item"></button>
 
-        <button class="grid-item"></button>
-        <button class="grid-item"></button>
-        <button class="grid-item"></button>
+        <button id="x6" value="6" class="grid-item"></button>
+        <button id="x7" value="7" class="grid-item"></button>
+        <button id="x8" value="8" class="grid-item"></button>
     </div>
 
     <button id="restart">Restart</button>
 
+    <!-- <script src="./static/model.js"></script> -->
+    <!-- <script src="/static/TicTacToe.js"></script> -->
+    <script type="module" src="./static/app.js" ></script>
 
 </body>
 
