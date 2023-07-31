@@ -43,7 +43,8 @@ for (const option of options_elements) {
         if (player == -1) {
             // predict(ticTacToe.board)
             //     .then((result) => { makeMove(buttons[result]); })
-            makeMove(buttons[Math.floor(Math.random() * 9)]);
+            // makeMove(buttons[Math.floor(Math.random() * 9)]);
+            makeMove(buttons[1]);
 
         }
         options_element.children[0].style.display = "none";
@@ -73,6 +74,7 @@ async function makeMove(button) {
         }
         options_element.children[0].style.display = "flex";
         options_element.children[1].style.display = "flex";
+        return false;
 
     }
     return true;
