@@ -14,19 +14,19 @@ def Model(input_shape, output_shape):
 
 
 if __name__ == '__main__':
-    data = np.array(read_csv('TicTacToe_processed_data.csv'))
+    data = np.array(read_csv('data generation\TicTacToe_processed_data.csv'))
     X_train = data[:,:18]
     Y_train = data[:,18:]
     print(X_train.shape, Y_train.shape)
 
 
 
-    model = Model(X_train.shape[1], Y_train.shape[1])
-    model.compile(optimizer='adam',
-                  loss='binary_crossentropy',
-                  metrics=['accuracy'])
+    # model = Model(X_train.shape[1], Y_train.shape[1])
+    # model.compile(optimizer='adam',
+    #               loss='binary_crossentropy',
+    #               metrics=['accuracy'])
 
-   
+    model = load_model('data generation\model.h5')
     model.summary()
-   
+    model.evaluate(X_train, Y_train)
     
