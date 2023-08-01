@@ -43,8 +43,8 @@ for (const option of options_elements) {
         if (player == -1) {
             // predict(ticTacToe.board)
             //     .then((result) => { makeMove(buttons[result]); })
-            // makeMove(buttons[Math.floor(Math.random() * 9)]);
-            makeMove(buttons[1]);
+            makeMove(buttons[Math.floor(Math.random() * 9)]);
+            
 
         }
         options_element.children[0].style.display = "none";
