@@ -1,16 +1,16 @@
 import { TicTacToe } from "./TicTacToe.js";
 import { predict, loadModel } from "./model.js";
 
+const options = document.querySelector(".options");
+const main = document.querySelector(".main");
+const cover = document.querySelector(".cover");
+const restartBtn = document.querySelector("#restart");
 
+loadModel().then(() => {
+    document.querySelector('.loading').style.display = 'none';
+    options.style.display = "flex";
 
-document.querySelector('.loading');
-
-
-
-setTimeout(
-    loadModel()
-    .then(document.querySelector('.loading').style.display = 'none')
-    ,2000);
+})
 
 
 
@@ -32,11 +32,8 @@ function updateboard(board) {
     }
 }
 
-const options_element = document.querySelector(".options");
-const options_elements = document.querySelectorAll(".option");
-const cover = document.querySelector(".cover");
 
-for (const option of options_elements) {
+for (const option of options.childNodes) {
     option.addEventListener("click", () => {
         ticTacToe.restart();
         let player = option.getAttribute("value");
@@ -47,9 +44,10 @@ for (const option of options_elements) {
             
 
         }
-        options_element.children[0].style.display = "none";
-        options_element.children[1].style.display = "none";
+        options.style.display = "none";
         cover.style.zIndex = -1;
+        main.style.display = "grid";
+        restartBtn.style.display = "block";
         
         updateboard(ticTacToe.board);
 
@@ -64,16 +62,13 @@ async function makeMove(button) {
     let state = ticTacToe.isWinner();
     console.log(state);
     if (state["winner"] != null) {
-        cover.style.zIndex = 1;
         if (state["winner"] != "Draw") {
             state["moves"].forEach(move => {
                 buttons[move].classList.add("win_color");
-                options_element.children[0].style.display = "flex";
-                options_element.children[1].style.display = "flex";
+
             })
         }
-        options_element.children[0].style.display = "flex";
-        options_element.children[1].style.display = "flex";
+        cover.style.zIndex = 1;
         return false;
 
     }
@@ -93,12 +88,12 @@ for (const button of buttons) {
     });
 }
 
-const restartButton = document.getElementById("restart");
-restartButton.addEventListener("click", () => {
-    options_element.children[0].style.display = "flex";
-    options_element.children[1].style.display = "flex";
+restartBtn.addEventListener("click", () => {
+    options.style.display = "flex";
+    restartBtn.style.display = "none";
+    main.style.display = "none";
+    
     ticTacToe.restart();
     updateboard(ticTacToe.board);
-    cover.style.zIndex = 1;
 
 });

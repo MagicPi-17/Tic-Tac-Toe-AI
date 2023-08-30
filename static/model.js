@@ -6,12 +6,6 @@ const cachedModel = {
 export async function predict(board) {
     board = convertToModelBoard(board);
     let input = tf.tensor([board]);
-    input.print();
-    if (!cachedModel.loaded) {
-        await loadModel();
-
-    }
-
     let prediction = cachedModel.model.predict(input);
     prediction = tf.argMax(prediction.flatten());
     prediction.print();

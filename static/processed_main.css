@@ -16,7 +16,7 @@ html {
     --blockColor: #1F3959;
     --secondaryColor: #101625;
     font-family: system-ui;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
 }
 
 body {
@@ -53,8 +53,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--primaryColor);
-    -webkit-animation: dots 2s infinite;
-            animation: dots 2s infinite;
 
 
 }
@@ -81,10 +79,8 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--primaryColor);
-    -webkit-animation: dots 1s infinite;
-            animation: dots 1s infinite;
 
-  }
+}
   
 @-webkit-keyframes loading {
     0% { content: "Loading"; }
@@ -101,26 +97,26 @@ body {
 }
 
 .options {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    width: 330px;
-    height: 110px;
+    gap: 20vw;
     margin-bottom: 30px;
 
 }
+
+
 
 
 .option {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    opacity: 0;
     border-radius: 10px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -130,15 +126,87 @@ body {
             align-items: center;
     background-color: var(--blockColor);
     border: 5.5px solid var(--secondaryColor);
-    width: 100px;
-    height: 100px;
+    width: min(20vw, 20vh);
+    height: min(20vw, 20vh);
+    font-size: 2rem;
 
     -webkit-transition: all 0.1s ease-in;
 
     -o-transition: all 0.1s ease-in;
 
     transition: all 0.1s ease-in;
+    
 }
+
+
+
+
+@-webkit-keyframes moveRight {
+    from {
+        -webkit-transform: translateX(-125%);
+                transform: translateX(-125%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+@keyframes moveRight {
+    from {
+        -webkit-transform: translateX(-125%);
+                transform: translateX(-125%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes moveLeft {
+    from {
+        -webkit-transform: translateX(125%);
+                transform: translateX(125%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        -webkit-transform: translateX(125%);
+                transform: translateX(125%);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.leftShow {
+    -webkit-animation: moveLeft 300ms forwards;
+            animation: moveLeft 300ms forwards;
+}
+
+.rightShow {
+    -webkit-animation: moveRight 300ms forwards;
+            animation: moveRight 300ms forwards;
+
+}
+
 
 .option:hover,
 .grid-item:hover,
@@ -166,17 +234,6 @@ body {
             box-shadow: 0 0 12px var(--blockColor);
 }
 
-.main {
-    display: -ms-grid;
-    display: grid;
-    position: relative;
-    -ms-grid-columns: 1fr 10px 1fr 10px 1fr;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    -webkit-transition: all 0.1s ease-in;
-    -o-transition: all 0.1s ease-in;
-    transition: all 0.1s ease-in;
-}
 
 .cover {
     position: absolute;
@@ -185,6 +242,19 @@ body {
     z-index: 0;
 
 }
+
+.main {
+    display: none;
+    position: relative;
+    -ms-grid-columns: 1fr 15px 1fr 15px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    -webkit-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+}
+
+
 
 .grid-item {
     display: -webkit-box;
@@ -198,10 +268,10 @@ body {
             align-items: center;
     background-color: var(--blockColor);
     border: 5.5px solid var(--secondaryColor);
-    width: 100px;
-    height: 100px;
+    width: min(20vw, 20vh);
+    height: min(20vw, 20vh);
     padding: 5px;
-    font-size: 30px;
+
     border-radius: 10px;
     text-align: center;
 }
@@ -214,7 +284,9 @@ body {
 }
 
 #restart {
-    margin-top: 30px;
+    font-size:1.3rem;
+    display: none;
+    margin-top: 50px;
     border-radius: 10px;
     height: 70px;
     min-width: 140px;
@@ -222,3 +294,4 @@ body {
     background-color: var(--blockColor);
     border: 5.5px solid var(--secondaryColor);
 }
+
